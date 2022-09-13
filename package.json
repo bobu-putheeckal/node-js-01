@@ -1,0 +1,11 @@
+{
+  "name": "01",
+  "version": "1.0.0",
+  "description": "A simple node js app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "bobu.putheeckal@gmail.com",
+  "license": "UNLICENSED"
+}
