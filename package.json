@@ -4,7 +4,8 @@
   "description": "A simple node js app",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node src/index.js"
   },
   "author": "bobu.putheeckal@gmail.com",
   "license": "UNLICENSED",
