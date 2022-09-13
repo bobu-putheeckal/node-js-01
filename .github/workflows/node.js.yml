@@ -10,13 +10,8 @@ on:
     branches: ["master"]
 
 jobs:
-  build:
+  Test:
     runs-on: ubuntu-latest
-
-    # strategy:
-    #   matrix:
-    #     node-version: [14.x, 16.x, 18.x]
-    #     # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v3
@@ -28,3 +23,35 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+  DeployDev:
+    name: Deploy to Dev
+    needs: [Test]
+    runs-on: ubuntu-latest
+    environment:
+      name: DEV
+      url: "http://dev.myapp.com"
+    steps:
+      - name: Testing...
+        run: echo I am testing!
+
+  DeployQA:
+    name: Deploy to QA
+    needs: [DeployDev]
+    runs-on: ubuntu-latest
+    environment:
+      name: QA
+      url: "http://test.myapp.com"
+    steps:
+      - name: Testing...
+        run: echo I am testing!
+
+  DeployProd:
+    name: Deploy to Production
+    needs: [DeployQA]
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: "http://www.myapp.com"
+    steps:
+      - name: Testing...
+        run: echo I am testing!
